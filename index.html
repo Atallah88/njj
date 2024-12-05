@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MD Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    hr {
+      margin: 20px 0;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .container img {
+      width: 100%;
+      height: auto;
+    }
+
+    .container .btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      color: black;
+      font-size: 15px;
+      padding: 20px 30px;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    .container .btn:hover {
+      background-color: black;
+      color: white;
+    }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .product-item {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .product-item:hover {
+      transform: scale(1.05);
+    }
+
+    .product-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .price {
+      font-size: 1.5em;
+      color: #2c3e50;
+    }
+
+    .quantity, .size {
+      margin-top: 15px;
+    }
+
+    .add-to-cart-btn {
+      padding: 12px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #2980b9;
+    }
+
+    .product-details {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 40px;
+      overflow-y: auto;
+    }
+
+    .product-details .content {
+      background: #fff;
+      color: #000;
+      border-radius: 8px;
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .back-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .back-btn:hover {
+      background-color: #27ae60;
+    }
+
+    .add-to-cart-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* Media queries for mobile responsiveness */
+    @media (max-width: 768px) {
+      .product-list {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+
+<!-- Hero Section -->
+<div class="container">
+  <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462575996_1103540154797839_6048607257694021616_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_ohc=EqfUdufO4_sQ7kNvgHfv4dv&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QHqNdSgqaTrnoEXhkX0uYpusDNEahQBlt4f7GxE2KD31w&oe=6779A240" alt="Shop New Collection">
+  <button class="btn">Shop New</button>
+</div>
+
+<hr>
+
+<!-- Product List -->
+<div class="product-list">
+  <!-- Product 1 -->
+  <div class="product-item" onclick="showDetails('product1')">
+    <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462568257_4117849565169748_3666709805574945354_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=zVG7gCxpgbAQ7kNvgGLl52a&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QFF-1R8L_U-ETRJ3bMnoVrz5Imdlq71M2bVAoKaJ48cNQ&oe=6779A74E" alt="Black Hoodie">
+    <h3>Black Hoodie</h3>
+    <p class="price">KD 15.00</p>
+  </div>
+
+  <!-- Product 2 -->
+  <div class="product-item" onclick="showDetails('product2')">
+    <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462579961_1318676172831020_141757187950253960_n.jpg?stp=dst-jpg_p480x480&_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_ohc=b4g43iw7-sQQ7kNvgEg7MaT&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QGste4ulBZ0_leKz_AmAeTIg9a5Q92KSR5LRvvHThaeKg&oe=6779BCE6" alt="White Hoodie">
+    <h3>White Hoodie</h3>
+    <p class="price">KD 15.00</p>
+  </div>
+</div>
+
+<!-- Product Details (Hidden by default) -->
+<div class="product-details" id="product1">
+  <div class="content">
+    <h2>Black Hoodie</h2>
+    <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462568257_4117849565169748_3666709805574945354_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=zVG7gCxpgbAQ7kNvgGLl52a&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QFF-1R8L_U-ETRJ3bMnoVrz5Imdlq71M2bVAoKaJ48cNQ&oe=6779A74E" alt="Black Hoodie">
+    <p class="price">KD 15.00</p>
+    
+    <div class="quantity">
+      <label for="quantity1">Quantity:</label>
+      <input type="number" id="quantity1" name="quantity1" min="1" value="1">
+    </div>
+
+    <div class="size">
+      <label for="size1">Size:</label>
+      <select id="size1" name="size1">
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+      </select>
+    </div>
+
+    <button class="add-to-cart-btn">Add to Cart</button>
+    <button class="back-btn" onclick="hideDetails()">Back</button>
+  </div>
+</div>
+
+<div class="product-details" id="product2">
+  <div class="content">
+    <h2>White Hoodie</h2>
+    <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/462579961_1318676172831020_141757187950253960_n.jpg?stp=dst-jpg_p480x480&_nc_cat=102&ccb=1-7&_nc_sid=0024fc&_nc_ohc=b4g43iw7-sQQ7kNvgEg7MaT&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QGste4ulBZ0_leKz_AmAeTIg9a5Q92KSR5LRvvHThaeKg&oe=6779BCE6" alt="White Hoodie">
+    <p class="price">KD 15.00</p>
+    
+    <div class="quantity">
+      <label for="quantity2">Quantity:</label>
+      <input type="number" id="quantity2" name="quantity2" min="1" value="1">
+    </div>
+
+    <div class="size">
+      <label for="size2">Size:</label>
+      <select id="size2" name="size2">
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+      </select>
+    </div>
+
+    <button class="add-to-cart-btn">Add to Cart</button>
+    <button class="back-btn" onclick="hideDetails()">Back</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <a href="https://www.instagram.com/md.shopq8?">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/800px-Instagram_logo_2022.svg.png" style="width:30px;height:30px;">
+  </a>
+</div>
+
+<script>
+  // Function to show product details in full-screen mode
+  function showDetails(productId) {
+    // Hide all product details
+    var details = document.querySelectorAll('.product-details');
+    details.forEach(function(detail) {
+      detail.style.display = 'none';
+    });
+    
+    // Show the selected product details
+    document.getElementById(productId).style.display = 'block';
+  }
+
+  // Function to hide product details and go back to the main page
+  function hideDetails() {
+    var details = document.querySelectorAll('.product-details');
+    details.forEach(function(detail) {
+      detail.style.display = 'none';
+    });
+  }
+</script>
+
+</body>
+</html>
